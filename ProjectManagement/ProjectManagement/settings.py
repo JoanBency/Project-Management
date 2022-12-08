@@ -31,13 +31,21 @@ ALLOWED_HOSTS = ['1e3b1e39a91a4ce99e6979422e1c174d.vfs.cloud9.us-east-1.amazonaw
 # Application definition
 
 INSTALLED_APPS = [
-    'projects.apps.ProjectsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # my apps
+    'accounts',
+    'register',
+    'projects',
+
+    # third apps
+    # 'multiselectfield',
+    # 'storages',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'accounts.views.context',
             ],
         },
     },
@@ -119,3 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/' # Included upload images
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'accounts/media') # Included upload images
+print(MEDIA_ROOT)
